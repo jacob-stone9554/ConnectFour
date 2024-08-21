@@ -1,0 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+    margin: 20px;
+    padding: 0;
+}
+
+.circle {
+    background: #fff;
+    border: 1px solid #999;
+    float: left;
+    height: 34px;
+    width: 34px;
+    border-radius: 100%;
+}
