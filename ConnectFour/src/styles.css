@@ -19,6 +19,28 @@ body {
     margin-bottom: 5px;
 }
 
+.circle.red {
+    background: #FF0000;
+    border: 1px solid #999;
+    float: left;
+    height: 34px;
+    width: 34px;
+    border-radius: 100%;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.circle.yellow {
+    background: #FFFF00;
+    border: 1px solid #999;
+    float: left;
+    height: 34px;
+    width: 34px;
+    border-radius: 100%;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
 .board-row:after {
     clear: both;
     content: '';
