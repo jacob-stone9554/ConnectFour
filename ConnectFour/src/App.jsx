@@ -31,11 +31,29 @@ export default function Board() {
         if(circles[index]) {
             return;
         }
+
         const newCircles = circles.slice();
-        if(xIsNext) {
-            newCircles[index] = 'red';
-        } else {
-            newCircles[index] = 'yellow';
+
+        // find the column by taking the modulus of 7
+        const column = index % 7;
+
+        // now find the lowest free spot in that column
+        let lowestEmptyIndex = null;
+
+        for(let row = 5; row >= 0; row --) {
+            const currIndex = row * 7 + column;
+            if(circles[currIndex] === null) {
+                lowestEmptyIndex = currIndex;
+                break;
+            }
+        }
+
+        if(lowestEmptyIndex !== null) {
+            if(xIsNext) {
+                newCircles[index] = 'red';
+            } else {
+                newCircles[index] = 'yellow';
+            }
         }
         
         console.log(`Clicked circle number: ${index}`)
