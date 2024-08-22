@@ -27,39 +27,35 @@ export default function Board() {
     };
 
     // handleClick determines what happens to a circle when it is clicked. right now, simply change the color.
-    function handleClick(index) {
-        if(circles[index]) {
-            return;
-        }
-
-        const newCircles = circles.slice();
-
-        // find the column by taking the modulus of 7
+    const handleClick = (index) => {
+        // Calculate the column by taking the modulus of the index by 7 (since there are 7 columns)
         const column = index % 7;
-
-        // now find the lowest free spot in that column
+    
+        // Find the lowest empty spot in the column
         let lowestEmptyIndex = null;
-
-        for(let row = 5; row >= 0; row --) {
-            const currIndex = row * 7 + column;
-            if(circles[currIndex] === null) {
-                lowestEmptyIndex = currIndex;
+        for (let row = 5; row >= 0; row--) {  // Start from the bottom row
+            const currentIndex = row * 7 + column;
+            if (circles[currentIndex] === null) {
+                lowestEmptyIndex = currentIndex;
                 break;
             }
         }
+    
+        // If a valid spot was found, update the state
+        if (lowestEmptyIndex !== null) {
+            const newCircles = circles.slice();
 
-        if(lowestEmptyIndex !== null) {
             if(xIsNext) {
-                newCircles[index] = 'red';
+                newCircles[lowestEmptyIndex] = 'red';
             } else {
-                newCircles[index] = 'yellow';
+                newCircles[lowestEmptyIndex] = 'yellow';
             }
+
+            setCircles(newCircles);
+            setXIsNext(!xIsNext);
         }
-        
-        console.log(`Clicked circle number: ${index}`)
-        setCircles(newCircles);
-        setXIsNext(!xIsNext);
-    }
+    };
+    
 
     return (
         <div className="board">
