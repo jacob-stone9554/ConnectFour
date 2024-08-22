@@ -12,7 +12,10 @@ function Circle({ className, onClick }) {
 */
 export default function Board() {
     const [circles, setCircles] = useState(Array(42).fill(null)); // the elements of the array represent the circles on the board. All are null until it is clicked (which is then assigned a value)
-    const [xIsNext, setXIsNext] = useState(true);
+    const [xIsNext, setXIsNext] = useState(true); // when developing, I was thinking x and y (player x, player why) so this is what i used. redIsNext kind of makes more sense now though.
+    let status;
+
+    status = "Current Player: " + (xIsNext ? "Red" : "Yellow");
 
     // helper function. takes an index, returns a Circle with key and index prop.
     const renderCircle = (index) => {
@@ -58,6 +61,8 @@ export default function Board() {
     
 
     return (
+        <>
+        <div className="status">{status}</div>
         <div className="board">
             {Array(6).fill(null).map((_, rowIndex) => (
                 <div key={rowIndex} className="board-row">
@@ -65,5 +70,6 @@ export default function Board() {
                 </div>
             ))}
         </div>
+        </>
     );
 }
