@@ -64,7 +64,12 @@ export default function Board() {
         <>
         <div className="status">{status}</div>
         <div className="board">
-            {Array(6).fill(null).map((_, rowIndex) => (
+            {
+            // create a 6 element array, fill the values with null.
+            // map creates a new array for each element in the 6 element array (it calls a function, see next line)
+            // (_, rowIndex) -> _ is a throwaway value (it is the null value assigned at that index) and rowIndex represents the index of the current element (which represents a row, ranging 0 - 6)
+            Array(6).fill(null).map((_, rowIndex) => (
+                // key is a special attribute that helps keep track of list items when they change
                 <div key={rowIndex} className="board-row">
                     {Array(7).fill(null).map((_, colIndex) => renderCircle(rowIndex * 7 + colIndex))}
                 </div>
